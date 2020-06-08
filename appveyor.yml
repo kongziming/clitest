@@ -1,28 +1,6 @@
-branches:
-  only:
-    - master
-    
-environment:
-    matrix:
-    - name: win32
-      platform: amx64_x86
-      qt: msvc2017
-
+install:
+  - set QTDIR=C:\Qt\5.9.9\mingw53_32
+  - set PATH=%PATH%;%QTDIR%\bin;C:\MinGW\bin
 build_script:
-  - call "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\VC\Auxiliary\Build\vcvars64.bat"
-  - set QTDIR=C:\Qt\5.9.9\msvc2017_64
-  - set PATH=%PATH%;%QTDIR%\bin;"C:\Program Files (x86)\Inno Setup 5";
-  - qmake
-  - nmake & exit 0
-  
-#after_build:
-#  - windeployqt release/TestProject.exe
-#  - cmd: cp LICENSE release/LICENSE.txt"
-#  - iscc innosetup.iss
-#  - rm release/*.o
-#  - rm release/*.cpp
-#
-#artifacts:
-#  - path: Output\YOUR-APP-*.exe
-#  - path: release
-#    type: zip
+  - qmake QtTest.pro
+  - mingw32-make
