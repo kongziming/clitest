@@ -1,0 +1,25 @@
+<UI version="4.0" >
+ <class>SimpleWidgetClass</class>
+ <widget class="QWidget" name="SimpleWidgetClass" >
+  <property name="objectName" >
+   <string notr="true">SimpleWidgetClass</string>
+  </property>
+  <property name="geometry" >
+   <rect>
+	<x>0</x>
+	<y>0</y>
+	<width>600</width>
+	<height>400</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>SimpleWidget</string>
+  </property>
+ </widget>
+ <layoutDefault spacing="6" margin="11" />
+ <pixmapfunction></pixmapfunction>
+ <resources>
+   <include location="SimpleWidget.qrc"/>
+ </resources>
+ <connections/>
+</UI>
