@@ -1,22 +1,16 @@
 branches:
   only:
     - master
+    
+environment:
+    matrix:
+    - name: win32
+      platform: amx64_x86
+      qt: msvc2017
 
-install:
-  - set QTDIR=C:\Qt\5.14.2\mingw73_32
-  - choco install -y InnoSetup
-  - set PATH=%PATH%;%QTDIR%\bin;"C:\Program Files (x86)\Inno Setup 5"
 build_script:
-  - qmake TestProject.pro
-  - mingw32-make
-after_build:
-  - windeployqt release/TestProject.exe
-  - cmd: cp LICENSE release/LICENSE.txt"
-  - iscc innosetup.iss
-  - rm release/*.o
-  - rm release/*.cpp
-
-artifacts:
-  - path: Output\YOUR-APP-*.exe
-  - path: release
-    type: zip
+  - call "C:\Program Files (x86)\Microsoft Visual Studio 14.0\VC\vcvarsall.bat" x86_amd64
+  - set QTDIR=C:\Qt\5.9.5\msvc2015_64
+  - set PATH=%PATH%;%QTDIR%\bin;
+  - qmake
+  - nmake & exit 0
